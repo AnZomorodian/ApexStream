@@ -1,0 +1,49 @@
+{
+  "streams": [
+    {
+      "streamId": "sky-1080",
+      "title": "Sky Sports F1 (Ultra)",
+      "provider": "StreamFree App",
+      "lang": "English",
+      "url": "https://streamfree.app/embed/racing/skyf1?server=origin&quality=1080p",
+      "quality": "1080p",
+      "id": 1
+    },
+    {
+      "streamId": "main-1",
+      "title": "International Feed",
+      "provider": "Primary",
+      "lang": "English",
+      "url": "https://pushembdz.store/embed/019cbe1e-1afc-75c3-86e0-41c48a9cfb9b",
+      "quality": "HD",
+      "id": 2
+    },
+    {
+      "streamId": "main-2",
+      "title": "International Feed (Alt)",
+      "provider": "Secondary",
+      "lang": "English",
+      "url": "https://pushembdz.store/embed/019cbe1d-2730-7464-89c0-73462be43600",
+      "quality": "HD",
+      "id": 3
+    },
+    {
+      "streamId": "es",
+      "title": "F1 TV Latino",
+      "provider": "ES Server",
+      "lang": "Español",
+      "url": "https://pushembdz.store/embed/019cbfc5-5b1d-7b79-8204-91580bdca60f",
+      "quality": "HD",
+      "id": 4
+    },
+    {
+      "streamId": "it",
+      "title": "Sky Italia",
+      "provider": "IT Server",
+      "lang": "Italiano",
+      "url": "https://pushembdz.store/embed/019cbfc5-5b1d-7482-887b-b83fbc2da8cb",
+      "quality": "HD",
+      "id": 5
+    }
+  ]
+}
