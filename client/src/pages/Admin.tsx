@@ -25,6 +25,67 @@ export default function Admin() {
   
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingStream, setEditingStream] = useState<Stream | null>(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [loginError, setLoginError] = useState("");
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (username === "Admin" && password === "Admin123") {
+      setIsLoggedIn(true);
+      setLoginError("");
+    } else {
+      setLoginError("Invalid credentials. Access denied.");
+    }
+  };
+
+  if (!isLoggedIn) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center p-4">
+        <div className="w-full max-w-md bg-card border border-border/50 rounded-lg p-8 shadow-2xl">
+          <div className="flex items-center justify-center gap-3 mb-8">
+            <Activity className="w-8 h-8 text-primary" />
+            <h1 className="font-display text-2xl font-bold tracking-widest text-white uppercase">
+              Pit Wall <span className="text-muted-foreground font-light">Login</span>
+            </h1>
+          </div>
+          <form onSubmit={handleLogin} className="space-y-6">
+            <div className="space-y-2">
+              <label className="text-xs font-display font-bold uppercase tracking-widest text-muted-foreground">Username</label>
+              <input 
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                className="w-full bg-background border border-border rounded px-4 py-3 text-white focus:outline-none focus:border-primary transition-all"
+                placeholder="ADMIN"
+              />
+            </div>
+            <div className="space-y-2">
+              <label className="text-xs font-display font-bold uppercase tracking-widest text-muted-foreground">Password</label>
+              <input 
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full bg-background border border-border rounded px-4 py-3 text-white focus:outline-none focus:border-primary transition-all"
+                placeholder="••••••••"
+              />
+            </div>
+            {loginError && <p className="text-xs text-destructive font-bold uppercase tracking-wide">{loginError}</p>}
+            <button 
+              type="submit"
+              className="w-full py-3 rounded-md font-display font-bold text-sm uppercase tracking-wider bg-primary hover:bg-primary/90 text-white shadow-[0_0_15px_rgba(225,6,0,0.3)] transition-all"
+            >
+              Authenticate
+            </button>
+            <Link href="/" className="block text-center text-xs text-muted-foreground hover:text-white transition-colors uppercase tracking-widest mt-4">
+              Return to Track
+            </Link>
+          </form>
+        </div>
+      </div>
+    );
+  }
 
   const openCreateModal = () => {
     setEditingStream(null);
@@ -56,13 +117,23 @@ export default function Admin() {
         
         <div className="w-px h-6 bg-border mx-2" />
         
-        <div className="ml-6 flex items-center gap-3">
-          <Activity className="w-5 h-5 text-primary" />
-          <h1 className="font-display text-lg font-bold tracking-widest text-white uppercase">
-            Pit Wall <span className="text-muted-foreground font-light">Control</span>
-          </h1>
-        </div>
-      </header>
+          <div className="ml-6 flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center border border-primary/30 shadow-[0_0_15px_rgba(225,6,0,0.2)]">
+              <Activity className="w-6 h-6 text-primary animate-pulse" />
+            </div>
+            <div>
+              <h1 className="font-display text-xl font-black tracking-[0.2em] text-white uppercase italic">
+                Pit Wall <span className="text-primary not-italic">Control</span>
+              </h1>
+              <div className="flex items-center gap-2 mt-0.5">
+                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">Systems Online</span>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <div className="h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50"></div>
 
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex justify-between items-end mb-8">
@@ -82,7 +153,8 @@ export default function Admin() {
         </div>
 
         {/* CONTENT */}
-        <div className="bg-card border border-border/50 rounded-lg shadow-2xl overflow-hidden relative">
+        <div className="bg-card border border-border/50 rounded-lg shadow-2xl overflow-hidden relative backdrop-blur-sm bg-opacity-80">
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-primary/50 to-primary"></div>
           {isLoading ? (
             <div className="p-12 text-center text-muted-foreground animate-pulse font-display uppercase tracking-widest">
               Establishing connection...

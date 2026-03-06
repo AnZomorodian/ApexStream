@@ -8,7 +8,8 @@ import {
   Radio, 
   Globe, 
   MonitorPlay,
-  AlertTriangle
+  AlertTriangle,
+  Send
 } from "lucide-react";
 import { UTCClock } from "@/components/Clock";
 import { Stream } from "@shared/schema";
@@ -160,6 +161,17 @@ export default function Home() {
               </span>
             </>
           )}
+          <div className="w-px h-3 bg-border/50 ml-2" />
+          <span className="text-muted-foreground/60">Designed & Developed by Artin Zomorodian</span>
+          <a 
+            href="https://t.me/ArtinZomorodian" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="ml-3 text-muted-foreground/40 hover:text-[#26A5E4] transition-colors"
+            title="Telegram"
+          >
+            <Send className="w-3.5 h-3.5" />
+          </a>
         </div>
         
         <UTCClock />

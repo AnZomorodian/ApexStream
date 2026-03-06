@@ -91,6 +91,14 @@ export async function registerRoutes(
               quality: "1080p"
           },
           { 
+              streamId: 'profamous-1', 
+              title: "Pro Famous Stream", 
+              provider: "ProFamous", 
+              lang: "English", 
+              url: "https://profamouslife.com/9c796445-81f4-420f-844a-ecdc34251801",
+              quality: "HD"
+          },
+          { 
               streamId: 'main-1', 
               title: "International Feed", 
               provider: "Primary", 
